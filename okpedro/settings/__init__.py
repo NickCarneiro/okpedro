@@ -154,3 +154,9 @@ LOGGING = {
         },
     }
 }
+
+try:
+    from .local import *
+except ImportError:
+    print 'no local settings found'
+    pass
