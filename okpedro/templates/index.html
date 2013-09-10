@@ -3,21 +3,105 @@
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="x-ua-compatible" content="ie=edge, chrome=1" />
-    <title>untitled</title>
+    <title>OK Pedro</title>
     <link rel="stylesheet" href="static/css/okp.css" />
     <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.min.css" rel="stylesheet">
+    <link href="http://fonts.googleapis.com/css?family=Josefin Sans&subset=latin" rel="stylesheet" type="text/css">
+    <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.no-icons.min.css" rel="stylesheet">
+    <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
 </head>
-<body>
+<body id="okpedro">
 <div class="container">
     <div class="row">
         <div class="span8 offset2">
-            <div class="box">
-                <h1>I could go for some breakfast tacos</h1>
+            <div id="top-container" class="box">
+                <h1>OK PEDRO</h1>
+                <div class="profile-container">
+                <img src="static/img/pedrosmall.jpg">
+                </div>
+                <div>
+                <div class="text-container">
+                <h3>Pedro will find someone to go on a date with you.
+                    Then all three of you go out together.</h3>
+                </div>
+                </div>
             </div>
         </div>
     </div>
+    <div class="row">
+        <div class="span8 offset2 center-text">
+            <h2>How it works</h2>
+            <div class="step">
+                <h3>Apply for a date <i class="icon-facebook-sign"></i></h3>
+                <p>Pedro will add you on Facebook. He'll scope out your profile to see what you're about.</p>
+            </div>
+            <div class="step">
+                <h3>Chill out for a bit <i class="icon-time"></i></h3>
+                <p>Pedro will take some time to find a good match for you. He's totally a people person so this should be no problem.</p>
+            </div>
+            <div class="step">
+                <h3>Go on the date <i class="icon-glass"></i></h3>
+                <p>Pedro will pick a bar in Austin for the three of you to meet up. He's been to all of them. The first round is on him.</p>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="span8 offset2 center-text">
+            <button id="apply-button" class="btn btn-large">Apply Now <i class="icon-heart"></i></button>
+        </div>
+    </div>
+    <div class="row">
+        <div id="apply-dialog-background"></div>
+        <div id="apply-dialog" class="span6 offset2">
+            <form>
+                <fieldset>
+                    <legend>Apply for a date</legend>
+                    <label>Your Facebook url</label>
+                    <input type="text" placeholder="https://www.facebook.com/pfeitosa">
+                    <label>Special requests for Pedro</label>
+                    <div><textarea name="special-requests"></textarea></div>
+
+                    <div id="payment-explanation">
+                        If Pedro accepts your application, he'll charge you $20.
+                    </div>
+                    <div id="payment-errors"></div>
+                    <div class="form-row">
+                        <label>Card Number</label>
+                            <input type="text" size="20" data-stripe="number"/>
+
+                    </div>
+
+                    <div class="form-row">
+                        <label>CVC</label>
+                            <input class="small-text-input" type="text" size="4" data-stripe="cvc" pattern="\d{3}"/>
+
+                    </div>
+
+                    <div class="form-row">
+                        <label>
+                            Expiration (MM/YYYY)
+                        </label>
+                            <input class="small-text-input" type="text" size="2" data-stripe="exp-month"
+                                   pattern="\d{2}"/>
+
+                        <span> / </span>
+                        <input class="small-text-input" type="text" size="4" data-stripe="exp-year"
+                               pattern="\d{4}"/>
+                    </div>
+                    <button id="apply-form-button" type="submit" class="btn btn-large">Apply</button>
+                </fieldset>
+            </form>
+        </div>
+    </div>
+
 </div>
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script type="text/javascript" src="https://js.stripe.com/v2/"></script>
+<script type="text/javascript">
+    // This identifies your website in the createToken call below
+    Stripe.setPublishableKey('pk_test_czwzkTp2tactuLOEOqbMTRzG');
+</script>
 <script src="static/js/okp.js"></script>
+
 
 </body>
