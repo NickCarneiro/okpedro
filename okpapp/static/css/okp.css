@@ -1,0 +1,91 @@
+#okpedro h1, #okpedro h2, #okpedro h3 {
+    font-family: 'Josefin Sans', sans-serif;
+}
+
+#okpedro h1 {
+    font-size: 78px;
+    line-height: 78px;
+}
+
+.profile-container {
+    padding: 10px;
+    background: #fff;
+    width: 200px;
+    display: inline-block;
+    margin-top: 10px;
+}
+
+#okpedro {
+    background: #ffece4;
+}
+
+.box {
+    text-align: center;
+}
+
+.text-container {
+    max-width: 350px;
+    display: inline-block;
+}
+
+#top-container {
+    border-bottom: 1px solid #CCAEA2;
+    padding-bottom: 20px;
+}
+
+.step {
+    width: 230px;
+    display: inline-block;
+    text-align: left;
+    vertical-align: top;
+    margin: 10px;
+}
+
+.center-text {
+    text-align: center;
+}
+
+i {
+    margin-left: 10px;
+}
+
+p {
+    font-size: 16px;
+}
+
+#apply-button {
+    margin-top: 20px;
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 30px;
+    font-weight: bold;
+}
+
+#apply-dialog-background {
+    display: none;
+    background: rgba(0, 0, 0, 0.70);
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+}
+
+#apply-dialog {
+    display: none;
+    position: absolute;
+    background: #fff;
+    padding: 20px;
+    top: 20%;
+}
+
+.small-text-input {
+    width: 40px;
+}
+
+#payment-explanation {
+    margin: 15px 0 15px 0
+}
+
+#payment-errors {
+    height: 26px;
+}
