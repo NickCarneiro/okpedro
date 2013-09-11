@@ -4,7 +4,7 @@ from django.core.context_processors import csrf
 from django.http import HttpResponse
 from django.shortcuts import render_to_response, render, redirect
 from models import Application
-from settings import GMAIL_PASSWORD, GMAIL_USER
+from okpedro.settings import GMAIL_PASSWORD, GMAIL_USER
 
 
 def home(req):
