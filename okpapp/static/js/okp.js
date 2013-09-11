@@ -96,7 +96,9 @@ function submitApplication(payload) {
         'type': 'post',
         'beforeSend': function (request)
         {
-            request.setRequestHeader("X-CSRFToken", csrfToken);
+            if (csrfToken) {
+                request.setRequestHeader("X-CSRFToken", csrfToken);
+            }
         },
         'data': payload,
         'success': applicationSuccess,

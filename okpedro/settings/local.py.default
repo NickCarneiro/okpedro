@@ -12,3 +12,6 @@ DATABASES = {
         'PORT': '',                      # Set to empty string for default.
     }
 }
+
+GMAIL_USER = 'pedro@trillworks.com'
+GMAIL_PASSWORD = ''
