@@ -13,10 +13,11 @@ $(function() {
 
 function showApplyDialog() {
     var $applyDialog = $('#apply-dialog');
+    $applyDialog.show();
+
+    $('#apply-dialog-background').show();
     var leftMargin = ($(window).width() - $applyDialog.width()) / 2;
     $applyDialog.css('margin-left', leftMargin);
-    $applyDialog.show();
-    $('#apply-dialog-background').show();
 }
 
 function hideApplyDialog() {

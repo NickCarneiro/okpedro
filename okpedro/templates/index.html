@@ -50,50 +50,49 @@
             <button id="apply-button" class="btn btn-large">Apply Now <i class="icon-heart"></i></button>
         </div>
     </div>
-    <div class="row">
-        <div id="apply-dialog-background"></div>
-        <div id="apply-dialog" class="span6 offset2">
-            <form>
-                <fieldset>
-                    <legend>Apply for a date</legend>
-                    <label>Your Facebook url</label>
-                    <input type="text" placeholder="https://www.facebook.com/pfeitosa">
-                    <label>Special requests for Pedro</label>
-                    <div><textarea name="special-requests"></textarea></div>
 
-                    <div id="payment-explanation">
-                        If Pedro accepts your application, he'll charge you $20.
-                    </div>
-                    <div id="payment-errors"></div>
-                    <div class="form-row">
-                        <label>Card Number</label>
-                            <input type="text" size="20" data-stripe="number"/>
 
-                    </div>
+</div>
+<div id="apply-dialog-background"></div>
+<div id="apply-dialog" class="span6">
+    <form>
+        <fieldset>
+            <legend>Apply for a date</legend>
+            <label>Your Facebook url</label>
+            <input type="text" placeholder="https://www.facebook.com/pfeitosa">
+            <label>Special requests for Pedro</label>
+            <div><textarea name="special-requests"></textarea></div>
 
-                    <div class="form-row">
-                        <label>CVC</label>
-                            <input class="small-text-input" type="text" size="4" data-stripe="cvc" pattern="\d{3}"/>
+            <div id="payment-explanation">
+                If Pedro accepts your application, he'll charge you $20.
+            </div>
+            <div id="payment-errors"></div>
+            <div class="form-row">
+                <label>Card Number</label>
+                <input type="text" size="20" data-stripe="number"/>
 
-                    </div>
+            </div>
 
-                    <div class="form-row">
-                        <label>
-                            Expiration (MM/YYYY)
-                        </label>
-                            <input class="small-text-input" type="text" size="2" data-stripe="exp-month"
-                                   pattern="\d{2}"/>
+            <div class="form-row">
+                <label>CVC</label>
+                <input class="small-text-input" type="text" size="4" data-stripe="cvc" pattern="\d{3}"/>
 
-                        <span> / </span>
-                        <input class="small-text-input" type="text" size="4" data-stripe="exp-year"
-                               pattern="\d{4}"/>
-                    </div>
-                    <button id="apply-form-button" type="submit" class="btn btn-large">Apply</button>
-                </fieldset>
-            </form>
-        </div>
-    </div>
+            </div>
 
+            <div class="form-row">
+                <label>
+                    Expiration (MM/YYYY)
+                </label>
+                <input class="small-text-input" type="text" size="2" data-stripe="exp-month"
+                       pattern="\d{2}"/>
+
+                <span> / </span>
+                <input class="small-text-input" type="text" size="4" data-stripe="exp-year"
+                       pattern="\d{4}"/>
+            </div>
+            <button id="apply-form-button" type="submit" class="btn btn-large">Apply</button>
+        </fieldset>
+    </form>
 </div>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 <script type="text/javascript" src="https://js.stripe.com/v2/"></script>
