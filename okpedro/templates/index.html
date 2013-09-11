@@ -21,7 +21,7 @@
                 </div>
                 <div>
                 <div class="text-container">
-                <h3>Pedro will find someone to go on a date with you.
+                <h3 id="intro">Pedro will find someone to go on a date with you.
                     Then all three of you go out together.</h3>
                 </div>
                 </div>
@@ -58,24 +58,27 @@
     <form>
         <fieldset>
             <legend>Apply for a date</legend>
+            <div id="payment-errors">Enter your info and Pedro will holler</div>
+            <label>Email</label>
+            <input id="apply-email" type="email" name="email">
             <label>Your Facebook url</label>
-            <input type="text" placeholder="https://www.facebook.com/pfeitosa">
+            <input id="apply-facebook-url" type="text" placeholder="https://www.facebook.com/pfeitosa">
             <label>Special requests for Pedro</label>
-            <div><textarea name="special-requests"></textarea></div>
+            <div><textarea id="apply-requests" name="special-requests"></textarea></div>
 
             <div id="payment-explanation">
                 If Pedro accepts your application, he'll charge you $20.
             </div>
-            <div id="payment-errors"></div>
+
             <div class="form-row">
                 <label>Card Number</label>
-                <input type="text" size="20" data-stripe="number"/>
+                <input id="apply-card-number" type="text" size="20" data-stripe="number"/>
 
             </div>
 
             <div class="form-row">
                 <label>CVC</label>
-                <input class="small-text-input" type="text" size="4" data-stripe="cvc" pattern="\d{3}"/>
+                <input id="apply-card-cvc" class="small-text-input" type="text" size="4" data-stripe="cvc" pattern="\d{3}"/>
 
             </div>
 
@@ -83,11 +86,11 @@
                 <label>
                     Expiration (MM/YYYY)
                 </label>
-                <input class="small-text-input" type="text" size="2" data-stripe="exp-month"
+                <input id="apply-card-expiry-month" class="small-text-input" type="text" size="2" data-stripe="exp-month"
                        pattern="\d{2}"/>
 
                 <span> / </span>
-                <input class="small-text-input" type="text" size="4" data-stripe="exp-year"
+                <input id="apply-card-expiry-year" class="small-text-input" type="text" size="4" data-stripe="exp-year"
                        pattern="\d{4}"/>
             </div>
             <button id="apply-form-button" type="submit" class="btn btn-large">Apply</button>

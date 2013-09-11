@@ -88,4 +88,7 @@ p {
 
 #payment-errors {
     height: 26px;
+    padding-top: 8px;
+    padding-bottom: 8px;
+    margin-bottom: 20px;
 }
