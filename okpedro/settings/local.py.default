@@ -15,3 +15,5 @@ DATABASES = {
 
 GMAIL_USER = 'pedro@trillworks.com'
 GMAIL_PASSWORD = ''
+
+STRIPE_API_KEY = ''

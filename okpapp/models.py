@@ -12,5 +12,20 @@ class Application(models.Model):
 
     def __unicode__(self):
         return self.email_address
+class Location(models.Model):
+    name = models.CharField(max_length=200)
+    address = models.CharField(max_length=400, null=True, blank=True)
+
+
+class Date(models.Model):
+    first_application = models.ForeignKey(Application, related_name='first_application')
+    second_application = models.ForeignKey(Application, related_name='second_application')
+    location = models.ForeignKey(Location, null=True)
+    date = models.DateTimeField(null=True)
+    def __unicode__(self):
+        return '{0} + {0}'.format(self.first_application.email_address,
+                                  self.second_application.email_address)
 
 admin.site.register(Application)
+admin.site.register(Date)
+admin.site.register(Location)
