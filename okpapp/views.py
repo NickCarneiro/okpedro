@@ -31,6 +31,7 @@ def send_email(application):
                        '<meta http-equiv="Content-Type" content="text/html charset=UTF-8" />' \
                        '<head><style>body {font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;}</style></head>' \
                        '<body><h3>Thanks for applying!</h3>'
+    body_html += '<div><img src="https://okpedro.trillworks.com/static/img/pedrosmall.jpg"></div>'
     body_html += '<p>I\'ll add you on Facebook so I can find a good date for you. ' \
                  'Make sure you add me back.</p>'
     body_html+= '<p>Pedro</p>'
@@ -38,7 +39,7 @@ def send_email(application):
     subject = 'Pedro has received your application!'
     message = """Content-Type: text/html\nFrom: %s\nTo: %s\nSubject: %s\n\n%s
 
-            """ % ('Trillworks Daily Cats', ", ".join([application.email_address]),
+            """ % ('Pedro', ", ".join([application.email_address]),
                    subject, body_html)
     session = smtplib.SMTP('smtp.gmail.com:587')
     session.ehlo()
