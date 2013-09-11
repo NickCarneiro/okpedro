@@ -83,16 +83,21 @@ var stripeResponseHandler = function(status, response) {
         console.log(token);
         submitApplication({
             'emailAddress': $('#apply-email').val(),
-            'facebookUrl': $('apply-facebook-url').val(),
-            'specialRequests': $('apply-requests').val(),
+            'facebookUrl': $('#apply-facebook-url').val(),
+            'specialRequests': $('#apply-requests').val(),
             'stripeToken': token
         })
     }
 };
 
 function submitApplication(payload) {
+    var csrfToken = getCookie('csrftoken');
     $.ajax('/apply', {
-        'method': 'post',
+        'type': 'post',
+        'beforeSend': function (request)
+        {
+            request.setRequestHeader("X-CSRFToken", csrfToken);
+        },
         'data': payload,
         'success': applicationSuccess,
         'error': applicationError
@@ -103,11 +108,14 @@ function applicationSuccess(res) {
     //hide everything and show thank you message.
     hideApplyDialog();
     $('#intro').text('Thanks for applying! Check your email for a confirmation.');
+    $('.hide-on-success').hide();
 }
 
 function applicationError(xhr, status, error) {
     console.log(xhr);
-    showError('Agh! Something went wrong on our end. Try again later.')
+    showError('Agh! Something went wrong on our end. Try again later.');
+    $('#apply-form-button').prop('disabled', false);
+
 }
 
 //alertClass should be: alert-success, alert-info, alert-error
@@ -118,4 +126,21 @@ function showError(message, alertClass) {
     if (alertClass) {
         $('#payment-errors').addClass(alertClass);
     }
+}
+
+// using jQuery
+function getCookie(name) {
+    var cookieValue = null;
+    if (document.cookie && document.cookie != '') {
+        var cookies = document.cookie.split(';');
+        for (var i = 0; i < cookies.length; i++) {
+            var cookie = jQuery.trim(cookies[i]);
+            // Does this cookie string begin with the name we want?
+            if (cookie.substring(0, name.length + 1) == (name + '=')) {
+                cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                break;
+            }
+        }
+    }
+    return cookieValue;
 }

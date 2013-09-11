@@ -1,4 +1,5 @@
 import json
+from django.http import HttpResponse
 from django.shortcuts import render_to_response, render, redirect
 from models import Application
 
@@ -16,7 +17,4 @@ def application(req):
     application.requests = req.POST.get('specialRequests')
     application.stripe_token = req.POST.get('stripeToken')
     application.save()
-    response = {
-        'message': "You have successfully applied. Check your email for confirmation."
-    }
-    return render(json.dumps(response))
+    return HttpResponse('{"message": "thanks"}', status=200)
