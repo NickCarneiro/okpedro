@@ -174,6 +174,7 @@ LOGGING = {
     }
 }
 
+CHARGE_AMOUNT = '$20.00'
 try:
     from .local import *
 except ImportError:

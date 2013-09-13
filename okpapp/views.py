@@ -6,7 +6,7 @@ from django.http import HttpResponse
 from django.shortcuts import render_to_response, render, redirect
 import stripe
 from models import Application, Date
-from okpedro.settings import GMAIL_PASSWORD, GMAIL_USER, STRIPE_API_KEY
+from okpedro.settings import GMAIL_PASSWORD, GMAIL_USER, STRIPE_API_KEY, CHARGE_AMOUNT
 import json
 
 stripe.api_key = STRIPE_API_KEY
@@ -60,6 +60,8 @@ def send_acceptance_confirmation_email(application):
     body_html += '<div><img src="https://okpedro.trillworks.com/static/img/pedrosmall.jpg"></div>'
     body_html += '<p>You seem pretty chill so we\'re gonna do this.' \
                  ' I\'ll get at you with a time and place soon.</p>'
+    body_html += '<p>For the sake of accountancy and stuff, consider this email your receipt.' \
+                 'I just charged you {}.</p>'.format(CHARGE_AMOUNT)
     body_html += '<p>Pedro</p>'
     body_html += '</body></html>'
     subject = 'Pedro has accepted your application!'
@@ -93,6 +95,7 @@ def create_date(req):
     date.second_application = second_application
     date.save()
     return HttpResponse(serializers.serialize('json', [date]), status=200)
+
 
 def charge(req):
     if req.method != 'POST':
