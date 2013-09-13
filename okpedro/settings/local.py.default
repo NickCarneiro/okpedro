@@ -16,4 +16,7 @@ DATABASES = {
 GMAIL_USER = 'pedro@trillworks.com'
 GMAIL_PASSWORD = ''
 
+#secret key
 STRIPE_API_KEY = ''
+#publishable key
+STRIPE_PUBLISHABLE_API_KEY = ''

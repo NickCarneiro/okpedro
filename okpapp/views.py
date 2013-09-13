@@ -6,12 +6,17 @@ from django.http import HttpResponse
 from django.shortcuts import render_to_response, render, redirect
 import stripe
 from models import Application, Date
-from okpedro.settings import GMAIL_PASSWORD, GMAIL_USER, STRIPE_API_KEY, CHARGE_AMOUNT
+from okpedro.settings import GMAIL_PASSWORD, GMAIL_USER, STRIPE_API_KEY, CHARGE_AMOUNT, \
+    STRIPE_PUBLISHABLE_API_KEY
 import json
 
 stripe.api_key = STRIPE_API_KEY
+
+
 def home(req):
-    context_instance = {}
+    context_instance = {
+        'stripe_api_key': STRIPE_PUBLISHABLE_API_KEY
+    }
     context_instance.update(csrf(req))
     return render_to_response('index.html', context_instance)
 
