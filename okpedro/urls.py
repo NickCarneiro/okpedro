@@ -12,7 +12,7 @@ urlpatterns = patterns('',
     url(r'^manage', 'okpapp.views.manage', name='manage'),
     url(r'^createDate', 'okpapp.views.create_date', name='createDate'),
     url(r'^charge', 'okpapp.views.charge', name='charge'),
-
+    (r'^accounts/login/$', 'django.contrib.auth.views.login'),
     # Uncomment the admin/doc line below to enable admin documentation:
     # url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
 

@@ -25,8 +25,8 @@ function pairDate(e) {
             reloadDates();
         },
         'error': function(xhr, status, error) {
-            console.log(xhr)
-            showError(error);
+            console.log(xhr);
+            showError(xhr.responseText);
         },
         'beforeSend': function (request)
         {
@@ -46,6 +46,7 @@ function showError(message) {
 }
 
 function chargeApplication(e) {
+    $('#charge-button').prop('disabled', true);
     var checkedApplications = $('#application-table :checked');
     if (checkedApplications.length != 1) {
         alert('Check one application to charge.');
@@ -68,7 +69,8 @@ function chargeApplication(e) {
             reloadDates();
         },
         'error': function(xhr, message, status) {
-            showError(message);
+            showError(xhr.responseText);
+            $('#charge-button').prop('disabled', false);
         }
     })
 

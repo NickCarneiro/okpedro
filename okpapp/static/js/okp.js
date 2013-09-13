@@ -17,7 +17,9 @@ function showApplyDialog() {
 
     $('#apply-dialog-background').show();
     var leftMargin = ($(window).width() - $applyDialog.width()) / 2;
+    var topMargin = ($(window).height() - $applyDialog.height()) / 2;
     $applyDialog.css('margin-left', leftMargin);
+    $applyDialog.css('margin-top', topMargin);
 }
 
 function hideApplyDialog() {
@@ -110,6 +112,8 @@ function applicationSuccess(res) {
     //hide everything and show thank you message.
     hideApplyDialog();
     $('#intro').text('Thanks for applying! Check your email for a confirmation.');
+    $('#intro').append('<p class="follow-pedro">Follow Pedro (<a href="https://twitter.com/paxionfrut">@paxionfrut</a>)' +
+        ' and I bet he will be really flattered and approve you. </p>');
     $('.hide-on-success').hide();
 }
 
