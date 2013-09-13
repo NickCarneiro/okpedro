@@ -1,4 +1,5 @@
 import smtplib
+from django.contrib.auth import authenticate
 from django.contrib.auth.decorators import login_required
 from django.core import serializers
 from django.core.context_processors import csrf
@@ -81,6 +82,7 @@ def send_acceptance_confirmation_email(application):
     session.sendmail('pedro@trillworks.com', [application.email_address], message)
     session.quit()
 
+
 @login_required
 def manage(req):
     apps = Application.objects.filter()
@@ -88,6 +90,7 @@ def manage(req):
     return render_to_response('manage.html', {'applications': apps, 'dates': dates})
 
 
+@login_required
 def create_date(req):
     if req.method != 'POST':
         return redirect('/')
@@ -102,6 +105,7 @@ def create_date(req):
     return HttpResponse(serializers.serialize('json', [date]), status=200)
 
 
+@login_required
 def charge(req):
     if req.method != 'POST':
         return

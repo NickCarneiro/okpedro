@@ -175,6 +175,7 @@ LOGGING = {
 }
 
 CHARGE_AMOUNT = '$20.00'
+LOGIN_REDIRECT_URL = '/manage'
 try:
     from .local import *
 except ImportError:

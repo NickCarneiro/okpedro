@@ -1,9 +1,13 @@
-
+{% extends "base.html" %}
+{% block content %}
 {% if form.errors %}
     <p>Your username and password didn't match. Please try again.</p>
 {% endif %}
+<div class="container">
+<div class="span6 offset3">
 
-<form method="post" action="/manage">
+<h1>Login</h1>
+<form method="post" action="">
     {% csrf_token %}
     <table>
         <tr>
@@ -19,3 +23,6 @@
     <input type="submit" value="login" />
     <input type="hidden" name="next" value="{{ next }}" />
 </form>
+</div>
+</div>
+{% endblock %}
