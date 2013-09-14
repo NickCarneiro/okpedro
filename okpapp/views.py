@@ -62,12 +62,12 @@ def send_acceptance_confirmation_email(application):
     body_html = '<html> ' \
                 '<meta http-equiv="Content-Type" content="text/html charset=UTF-8" />' \
                 '<head><style>body {font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;}</style></head>' \
-                '<body><h3>Whoa. Pedro accepted your application</h3>'
+                '<body><h3>Whoa. You just got approved for an OK PEDRO date.</h3>'
     body_html += '<div><img src="https://okpedro.trillworks.com/static/img/pedrosmall.jpg"></div>'
     body_html += '<p>You seem pretty chill so we\'re gonna do this.' \
                  ' I\'ll get at you with a time and place soon.</p>'
     body_html += '<p>For the sake of accountancy and stuff, consider this email your receipt.' \
-                 'I just charged you {}.</p>'.format(CHARGE_AMOUNT)
+                 'I just charged you {}. Thanks!</p>'.format(CHARGE_AMOUNT)
     body_html += '<p>Pedro</p>'
     body_html += '</body></html>'
     subject = 'Pedro has accepted your application!'
