@@ -9,9 +9,14 @@ class Application(models.Model):
     apply_datetime = models.DateTimeField(auto_now_add=True)
     stripe_token = models.TextField(max_length=400)
     charged = models.BooleanField(default=False)
+    description = models.TextField(null=True)
 
     def __unicode__(self):
-        return self.email_address
+        display_text = self.email_address
+        if self.description is not None:
+            display_text = "{0} {1}".format(display_text, self.description[:100])
+        return display_text
+
 class Location(models.Model):
     name = models.CharField(max_length=200)
     address = models.CharField(max_length=400, null=True, blank=True)
@@ -28,7 +33,10 @@ class Date(models.Model):
     description = models.TextField(null=True)
 
     def __unicode__(self):
-        return self.description[:100]
+        if self.description is not None:
+            return self.description[:100]
+        else:
+            return self.first_application.email_address + ' ' + self.second_application.email_address
 admin.site.register(Application)
 admin.site.register(Date)
 admin.site.register(Location)
