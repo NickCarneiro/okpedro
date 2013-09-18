@@ -66,7 +66,7 @@ def send_acceptance_confirmation_email(application):
     body_html += '<div><img src="https://okpedro.trillworks.com/static/img/pedrosmall.jpg"></div>'
     body_html += '<p>You seem pretty chill so we\'re gonna do this.' \
                  ' I\'ll get at you with a time and place soon.</p>'
-    body_html += '<p>For the sake of accountancy and stuff, consider this email your receipt.' \
+    body_html += '<p>For the sake of accountancy and stuff, consider this email your receipt. ' \
                  'I just charged you {}. Thanks!</p>'.format(CHARGE_AMOUNT)
     body_html += '<p>Pedro</p>'
     body_html += '</body></html>'
