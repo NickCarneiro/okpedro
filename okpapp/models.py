@@ -23,7 +23,7 @@ class Date(models.Model):
     location = models.ForeignKey(Location, null=True)
     date = models.DateTimeField(null=True)
     def __unicode__(self):
-        return '{0} + {0}'.format(self.first_application.email_address,
+        return '{0} + {1}'.format(self.first_application.email_address,
                                   self.second_application.email_address)
 
 admin.site.register(Application)
