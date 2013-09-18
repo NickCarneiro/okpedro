@@ -26,10 +26,9 @@ class Date(models.Model):
     location = models.ForeignKey(Location, null=True)
     date = models.DateTimeField(null=True)
     description = models.TextField(null=True)
-    def __unicode__(self):
-        return '{0} + {1}'.format(self.first_application.email_address,
-                                  self.second_application.email_address)
 
+    def __unicode__(self):
+        return self.description[:100]
 admin.site.register(Application)
 admin.site.register(Date)
 admin.site.register(Location)
