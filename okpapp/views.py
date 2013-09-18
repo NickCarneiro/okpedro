@@ -99,6 +99,9 @@ def create_date(req):
     date = Date()
     first_application = Application.objects.get(pk=app_id_one)
     second_application = Application.objects.get(pk=app_id_two)
+    if first_application.charged is False or second_application.charged is False:
+        return HttpResponse({'error': 'Both applications must be charged before creating a date'},
+                            status=200)
     date.first_application = first_application
     date.second_application = second_application
     date.save()

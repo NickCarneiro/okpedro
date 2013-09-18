@@ -22,6 +22,9 @@ function pairDate(e) {
         'type': 'post',
         'success': function(res) {
             console.log(res);
+            if (res['error']) {
+                alert(res['error']);
+            }
             reloadDates();
         },
         'error': function(xhr, status, error) {
