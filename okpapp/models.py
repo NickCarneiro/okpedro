@@ -16,6 +16,9 @@ class Location(models.Model):
     name = models.CharField(max_length=200)
     address = models.CharField(max_length=400, null=True, blank=True)
 
+    def __unicode__(self):
+        return self.name
+
 
 class Date(models.Model):
     first_application = models.ForeignKey(Application, related_name='first_application')
