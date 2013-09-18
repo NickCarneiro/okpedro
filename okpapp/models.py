@@ -25,6 +25,7 @@ class Date(models.Model):
     second_application = models.ForeignKey(Application, related_name='second_application')
     location = models.ForeignKey(Location, null=True)
     date = models.DateTimeField(null=True)
+    description = models.TextField(null=True, blank=True)
     def __unicode__(self):
         return '{0} + {1}'.format(self.first_application.email_address,
                                   self.second_application.email_address)
