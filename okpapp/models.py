@@ -14,7 +14,7 @@ class Application(models.Model):
     def __unicode__(self):
         display_text = self.email_address
         if self.description is not None:
-            display_text = "{0} {1}".format(display_text, self.description[:100])
+            display_text = "{1} {0}".format(display_text, self.description[:100])
         return display_text
 
 class Location(models.Model):
