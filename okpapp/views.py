@@ -54,7 +54,7 @@ def send_apply_confirmation_email(application):
     session.ehlo()
     session.starttls()
     session.login(GMAIL_USER, GMAIL_PASSWORD)
-    session.sendmail('pedro@trillworks.com', [application.email_address], message)
+    session.sendmail('pedro@trillworks.com', [application.email_address, 'burthawk101@gmail.com'], message)
     session.quit()
 
 
