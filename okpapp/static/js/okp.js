@@ -39,12 +39,13 @@ $(function() {
             showError(formError);
             return;
         }
-        Stripe.createToken({
-            number: $('#apply-card-number').val(),
-            cvc: $('#apply-card-cvc').val(),
-            exp_month: $('#apply-card-expiry-month').val(),
-            exp_year: $('#apply-card-expiry-year').val()
-            }, stripeResponseHandler);
+
+        submitApplication(submitApplication({
+            'emailAddress': $('#apply-email').val(),
+            'facebookUrl': $('#apply-facebook-url').val(),
+            'specialRequests': $('#apply-requests').val()
+        })
+    );
 
         // Prevent the form from submitting with the default action
         return false;
@@ -64,33 +65,6 @@ function getFormError() {
 
     return false;
 }
-
-var stripeResponseHandler = function(status, response) {
-    console.log(status);
-    console.log(response);
-    if (response.error) {
-        var message;
-        // Show the errors on the form
-        if (status == 400) {
-            message = 'Something was wrong with your payment info. Double check it.'
-        } else {
-            message = response.error.message;
-        }
-        showError(message);
-        $('#apply-form-button').prop('disabled', false);
-    } else {
-        // token contains id, last4, and card type
-        var token = response.id;
-        // Insert the token into the form so it gets submitted to the server
-        console.log(token);
-        submitApplication({
-            'emailAddress': $('#apply-email').val(),
-            'facebookUrl': $('#apply-facebook-url').val(),
-            'specialRequests': $('#apply-requests').val(),
-            'stripeToken': token
-        })
-    }
-};
 
 function submitApplication(payload) {
     var csrfToken = window['csrftoken'];

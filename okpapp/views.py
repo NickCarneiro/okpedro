@@ -29,7 +29,6 @@ def application(req):
     application.email_address = req.POST.get('emailAddress')
     application.facebook_url = req.POST.get('facebookUrl')
     application.requests = req.POST.get('specialRequests')
-    application.stripe_token = req.POST.get('stripeToken')
     application.save()
     send_apply_confirmation_email(application)
     return HttpResponse('{"message": "thanks"}', status=200)

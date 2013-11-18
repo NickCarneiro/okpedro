@@ -67,32 +67,10 @@
             <div><textarea id="apply-requests" name="special-requests"></textarea></div>
 
             <div id="payment-explanation">
-                If Pedro accepts your application, he'll charge you $20.
+                If Pedro accepts your application, he'll set up a time and place with you over email.
             </div>
 
-            <div class="form-row">
-                <label>Card Number</label>
-                <input id="apply-card-number" type="text" size="20" data-stripe="number"/>
 
-            </div>
-
-            <div class="form-row">
-                <label>CVC</label>
-                <input id="apply-card-cvc" class="small-text-input" type="text" size="4" data-stripe="cvc" pattern="\d{3}"/>
-
-            </div>
-
-            <div class="form-row">
-                <label>
-                    Expiration (MM/YYYY)
-                </label>
-                <input id="apply-card-expiry-month" class="small-text-input" type="text" size="2" data-stripe="exp-month"
-                       pattern="\d{2}"/>
-
-                <span> / </span>
-                <input id="apply-card-expiry-year" class="small-text-input" type="text" size="4" data-stripe="exp-year"
-                       pattern="\d{4}"/>
-            </div>
             <button id="apply-form-button" type="submit" class="btn btn-large">Apply</button>
         </fieldset>
     </form>
