@@ -85,7 +85,7 @@ function submitApplication(payload) {
 function applicationSuccess(res) {
     //hide everything and show thank you message.
     hideApplyDialog();
-    $('#intro').text('Thanks for applying! Check your email for a confirmation.');
+    $('#intro').text('You have applied for a role in a minor capitalist folly.');
     $('#intro').append('<p class="follow-pedro">Follow Pedro (<a href="https://twitter.com/paxionfrut">@paxionfrut</a>)' +
         ' and I bet he will be really flattered and approve you. </p>');
     $('.hide-on-success').hide();

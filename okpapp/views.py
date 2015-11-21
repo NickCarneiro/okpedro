@@ -5,8 +5,10 @@ from django.core import serializers
 from django.core.context_processors import csrf
 from django.http import HttpResponse
 from django.shortcuts import render_to_response, render, redirect
+from django.views.decorators.csrf import csrf_exempt
 from models import Application, Date
-from okpedro.settings import GMAIL_PASSWORD, GMAIL_USER
+from okpedro.settings import SES_PASSWORD, SES_USER
+import boto.ses
 import json
 
 
@@ -14,16 +16,22 @@ import json
 def home(req):
     return render_to_response('index.html')
 
-
+@csrf_exempt
 def application(req):
     if req.method != 'POST':
         return redirect('/')
+
+    conn = boto.ses.connect_to_region(
+        'us-west-2',
+        aws_access_key_id='AKIAI6NWG46N4YUJ3POQ',
+        aws_secret_access_key='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')
+
     application = Application()
     application.email_address = req.POST.get('emailAddress')
     application.facebook_url = req.POST.get('facebookUrl')
     application.requests = req.POST.get('specialRequests')
     application.save()
-    send_apply_confirmation_email(application)
+    # send_apply_confirmation_email(application)
     return HttpResponse('{"message": "thanks"}', status=200)
 
 
@@ -35,19 +43,21 @@ def send_apply_confirmation_email(application):
     body_html += '<div><img src="https://okpedro.trillworks.com/static/img/pedrosmall.jpg"></div>'
     body_html += '<p>I\'ll add you on Facebook so I can find a good date for you. ' \
                  'Make sure you add me back.</p>'
-    body_html+= '<p>Pedro</p>'
+    body_html += '<p>Pedro</p>'
     body_html += '</body></html>'
     subject = 'Pedro has received your application!'
     message = """Content-Type: text/html\nFrom: %s\nTo: %s\nSubject: %s\n\n%s
 
             """ % ('Pedro', ", ".join([application.email_address]),
                    subject, body_html)
-    session = smtplib.SMTP('smtp.gmail.com:587')
+    session = smtplib.SMTP('email-smtp.us-west-2.amazonaws.com:587')
     session.ehlo()
     session.starttls()
-    session.login(GMAIL_USER, GMAIL_PASSWORD)
-    session.sendmail('pedro@trillworks.com', [application.email_address, 'burthawk101@gmail.com'], message)
+    session.login(SES_USER, SES_PASSWORD)
+    session.sendmail('pedro@okpedro.com', [application.email_address, 'burthawk101@gmail.com'], message)
     session.quit()
+
+
 
 
 def send_acceptance_confirmation_email(application):
@@ -66,10 +76,10 @@ def send_acceptance_confirmation_email(application):
 
             """ % ('Pedro', ", ".join([application.email_address]),
                    subject, body_html)
-    session = smtplib.SMTP('smtp.gmail.com:587')
+    session = smtplib.SMTP('email-smtp.us-west-2.amazonaws.com:587')
     session.ehlo()
     session.starttls()
-    session.login(GMAIL_USER, GMAIL_PASSWORD)
+    session.login(SES_USER, SES_PASSWORD)
     session.sendmail('pedro@trillworks.com', [application.email_address], message)
     session.quit()
 
