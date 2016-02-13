@@ -55,25 +55,7 @@
 </div>
 <div id="apply-dialog-background"></div>
 <div id="apply-dialog" class="span6">
-    <form>
-        <fieldset>
-            <legend>Apply for a date</legend>
-            <div id="payment-errors">Enter your info and Pedro will holler</div>
-            <label>Email</label>
-            <input id="apply-email" type="email" name="email">
-            <label>Your Facebook url</label>
-            <input id="apply-facebook-url" type="text" placeholder="https://www.facebook.com/pfeitosa">
-            <label>Special requests for Pedro</label>
-            <div><textarea id="apply-requests" name="special-requests"></textarea></div>
-
-            <div id="payment-explanation">
-                If Pedro accepts your application, he'll set up a time and place with you over email.
-            </div>
-
-
-            <button id="apply-form-button" type="submit" class="btn btn-large">Apply</button>
-        </fieldset>
-    </form>
+    <iframe id="signup-form" src="https://docs.google.com/forms/d/14-7LLIVEh4TrH1wPYSHykxUl2s9aE6wu9biXF2glrR8/viewform?embedded=true" width="760" height="500" frameborder="0" marginheight="0" marginwidth="0">Loading...</iframe>
 </div>
 <script>
     window['csrftoken'] = '{{ csrf_token }}';

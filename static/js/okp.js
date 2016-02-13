@@ -20,6 +20,13 @@ function showApplyDialog() {
     var topMargin = ($(window).height() - $applyDialog.height()) / 2;
     $applyDialog.css('margin-left', leftMargin);
     $applyDialog.css('margin-top', topMargin);
+
+    var $iframe = $('#signup-form');
+    var dialogWidth = $applyDialog.width();
+    var dialogHeight = $applyDialog.height();
+    $iframe.css('width', dialogWidth);
+    //$iframe.css('height', dialogHeight);
+    $iframe.css('margin-top', 0);
 }
 
 function hideApplyDialog() {
